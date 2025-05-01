@@ -1,9 +1,9 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
-import { AuthGuard } from '@nestjs/passport';
 import { RoleGuard } from '../auth/guards/roles.guard';
 import { Roles } from '../auth/decorators/roles';
+import {JwtGuard} from "../auth/guards/jwt.guard";
 
-@UseGuards(AuthGuard('jwt'), RoleGuard)
+@UseGuards(JwtGuard, RoleGuard)
 @Controller('user')
 export class UsersController {
   @Get('admin')
